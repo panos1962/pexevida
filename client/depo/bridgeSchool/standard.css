@@ -1,0 +1,45 @@
+body {
+	position: relative;
+	width: 728px;
+	overflow: hidden;
+	margin: 0;
+	font-family: "Arial", sans-serif;
+}
+
+.kimeno {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	text-align: center;
+}
+
+#kimeno1 {
+	top: 24px;
+	font-size: 30px;
+	font-weight: bold;
+	color: rgb(22, 77, 66);
+}
+
+#kimeno2 {
+	top: 20px;
+	font-size: 30px;
+	font-weight: bold;
+	color: rgb(20, 0, 100);
+}
+
+#kimeno3 {
+	top: 46px;
+	font-size: 20px;
+	font-weight: bold;
+	color: rgb(255, 223, 139)
+}
+
+#kimeno4 {
+	top: 13px;
+	line-height: 156%;
+	font-size: 20px;
+	font-weight: bold;
+	color: rgb(255, 223, 139)
+}

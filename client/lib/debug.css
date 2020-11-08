@@ -1,0 +1,34 @@
+:root {
+	zelatina: rgba(128, 128, 0, 0.07);
+}
+
+body {
+	background-image: url('../ikona/paraskinio/standard.png');
+	background-repeat: repeat;
+}
+
+#toolbar {
+	background-color: var(zelatina);
+	border-style: none none solid none;
+	border-width: 2px;
+	border-color: olive;
+}
+
+#ribbon {
+	background-color: var(zelatina);
+	border-style: solid none none none;
+	border-width: 2px;
+	border-color: teal;
+}
+
+#ofelimo {
+	min-height: 600px;
+}
+
+#toolbar {
+	background-color: rgb(179, 101, 101);
+}
+
+#ribbon {
+	background-color: rgb(179, 101, 101);
+}

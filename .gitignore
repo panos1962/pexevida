@@ -1,0 +1,9 @@
+*.swp
+*.min.js
+rcLocal.js
+misc/.mistiko/*
+skiser/log/*
+client/photo/*/*
+client/filajs
+client/site/Boss!
+client/site/diafimisi.php

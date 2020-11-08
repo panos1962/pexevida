@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Exec=/usr/bin/chromium-browser --app=http://www.pexevida.gr/
+Icon=/home/panos/Desktop/pexevida/client/ikona/vida/vida128.png
+StartupWMClass=www.pexevida.gr
+Name=pexevida
+Name[en_US]=Vida!
+Name[el_GR]=Βίδα!

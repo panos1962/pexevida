@@ -1,0 +1,899 @@
+body {
+	max-width: none;
+}
+
+#diafimisi {
+	padding: 8px;
+	text-align: center;
+}
+
+#ofelimo {
+	position: relative;
+	/* Το ελάχιστο ύψος του ωφελίμου κανονίζεται από το πρόγραμμα */
+	min-height: 0;
+
+	font-size: 0;
+	white-space: nowrap;
+}
+
+.panelV:hover {
+	cursor: ew-resize;
+}
+
+.panelH:hover {
+	cursor: ns-resize;
+}
+
+#dialogos {
+	display: none;
+	position: absolute;
+	top: 120px;
+	left: 240px;
+	overflow: auto;
+	font-size: 16px;
+}
+
+/**********************************************************************************************************************/
+
+.enotita {
+	position: relative;
+	vertical-align: top;
+	display: inline-block;
+	height: 100%;
+	overflow: hidden;
+	font-size: 16px;
+}
+
+#pektisEnotita {
+	width: 154px;
+}
+
+#kafenioEnotita {
+	width: 297px;
+}
+
+#trapeziEnotita {
+	width: 324px;
+}
+
+#pexnidiEnotita {
+	width: 0px;
+}
+
+#partidaEnotita {
+/*
+	width: 0px;
+*/
+	width: 457px;
+}
+
+/**********************************************************************************************************************/
+
+#anazitisiArea {
+	white-space: normal;
+	padding: 0 4px;
+	height: 167px;
+
+	border-style: none solid solid none;
+	border-width: 1px;
+	border-color: olive;
+}
+
+#thamonasArea {
+	white-space: normal;
+	padding: 0 4px;
+	border-style: solid solid none none;
+	border-width: 1px;
+	border-color: olive;
+}
+
+.thamonas {
+	position: relative;
+	display: inline-block;
+	margin: 4px;
+	width: 120px;
+	white-space: nowrap;
+	background-color: #A6CC97;
+
+	border-style: solid;
+	border-width: 2px;
+	border-color: teal;
+	border-radius: 5px;
+	box-shadow: 1px 1px 4px #888;
+}
+
+.thamonas:hover {
+	font-weight: bold;
+}
+
+.thamonasOnoma {
+	position: relative;
+	bottom: 1px;
+	width: 110px;
+	overflow: hidden;
+	margin: auto;
+	white-space: nowrap;
+	text-align: center;
+}
+
+/**********************************************************************************************************************/
+
+#kafenioArea {
+	white-space: normal;
+	padding: 0 4px;
+	height: 200px;
+
+	border-style: none solid solid solid;
+	border-width: 1px;
+	border-color: olive;
+}
+
+.kafenio {
+	position: relative;
+	display: inline-block;
+	margin: 12px 5px 6px 5px;
+	width: 120px;
+	white-space: nowrap;
+	background-color: #A6CC97;
+
+	border-style: solid;
+	border-width: 2px;
+	border-color: #A6CC97;
+	box-shadow: 1px 1px 4px #888;
+
+	cursor: pointer;
+}
+
+.kafenioPrive {
+	border-color: #6D965E;
+	border-style: solid;
+}
+
+.kafenioAvato {
+	opacity: 0.5;
+	cursor: default;
+	border-color: #B5B5B5;
+}
+
+.kafenioAorato {
+	display: none;
+	cursor: default;
+}
+
+.kafenioTrexon {
+	background-color: #FFFFB3;
+}
+
+.kafenio:hover {
+	font-weight: bold;
+}
+
+.kafenioOptions {
+	position: absolute;
+	top: -12px;
+	right: 4px;
+}
+
+.kafenioOptionIcon {
+	width: 20px;
+}
+
+.kafenioKodikos {
+	position: absolute;
+	bottom: 1px;
+	left: 2px;
+
+	padding: 0px 1px;
+
+	font-size: 10px;
+	font-weight: bold;
+	font-family: Tahoma, Geneva, sans-serif;
+	color: #313062;
+}
+
+.kafenioOnomasia {
+	width: 110px;
+	overflow: hidden;
+	margin: auto;
+	white-space: nowrap;
+	text-align: center;
+}
+
+.kafenioOwner {
+	padding: 0 2px;
+	text-align: right;
+	font-size: 80%;
+	font-style: italic;
+}
+
+.kafenioOwner:before {
+	content: 'by ';
+	font-weight: normal;
+}
+
+#sizitisiLobi {
+	border-style: solid solid none solid;
+	border-width: 1px;
+	border-color: olive;
+	background-image: url('../ikona/misc/sizitisi.jpg');
+	background-repeat: repeat;
+}
+
+/**********************************************************************************************************************/
+
+#trapeziArea {
+	white-space: normal;
+	padding: 0 4px;
+	height: 380px;
+
+	border-style: none solid solid solid;
+	border-width: 1px;
+	border-color: olive;
+}
+
+.trapezi {
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+	width: 276px;
+	margin: 16px 10px 4px 10px;
+	padding: 20px 0 4px 0;
+
+	background-image: url('../ikona/tsoxa/kafenioPektis.jpg');
+	background-repeat: repeat;
+
+	border-style: solid;
+	border-width: 2px;
+	border-color: #8BA987;
+	border-radius: 8px;
+	box-shadow: 1px 1px 4px #888;
+
+	cursor: pointer;
+}
+
+.trapeziTheasi {
+	background-image: url('../ikona/tsoxa/kafenioTheatis.jpg');
+}
+
+.trapezi:hover {
+	background-color: #FFFF99;
+}
+
+.trapeziPrive {
+	border-color: #60835D;
+	border-style: solid;
+}
+
+.trapeziOptions {
+	position: absolute;
+	top: -16px;
+	right: 2px;
+}
+
+.trapeziOptionIcon {
+	width: 22px;
+	margin: 0 2px;
+}
+
+.trapeziPektes {
+	position: relative;
+	display: inline-block;
+	margin: 4px;
+	width: 268px;
+	height: 70px;
+}
+
+.trapeziX {
+	position: absolute;
+	top: 13px;
+	left: 125px;
+	font-size: 34px;
+	font-weight: normal;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	color: #488B53;
+	text-shadow: 1px 1px 4px #5D5D5D;
+}
+
+.trapeziPektis {
+	position: absolute;
+	display: inline-block;
+	margin: 4px;
+	width: 120px;
+	height: 1.3em;
+	white-space: nowrap;
+	background-color: #A6CC97;
+
+	border-style: solid;
+	border-width: 2px;
+	border-color: #488B53;
+	border-radius: 5px;
+	box-shadow: 1px 1px 4px #5D5D5D;
+}
+
+.trapeziPektis:hover {
+	font-weight: bold;
+}
+
+.trapeziPektisApodoxi {
+	border-color: #0B6F0B;
+}
+
+.trapeziKodikos {
+	position: absolute;
+	top: 5px;
+	left: 10px;
+
+	padding: 2px 2px 0px 2px;
+
+	font-family: Tahoma, Geneva, sans-serif;
+	font-weight: bold;
+
+	color: #3431A9;
+	background-color: #8BA987;
+	border-radius: 3px;
+}
+
+.trapeziKodikosProsklisi {
+	background-color: #63B263;
+}
+
+.trapeziKodikosEpilogi {
+	background-color: #FFFF66;
+}
+
+.trapeziKafenio {
+	position: absolute;
+	top: 5px;
+	right: 10px;
+
+	padding: 2px 2px 0px 2px;
+
+	font-family: Tahoma, Geneva, sans-serif;
+	font-weight: bold;
+
+	color: #575B74;
+	background-color: #8BA987;
+	border-radius: 3px;
+}
+
+.trapeziPektis1 {
+	top: 2px;
+	left: 2px;
+}
+
+.trapeziPektis2 {
+	bottom: 2px;
+	left: 2px;
+}
+
+.trapeziPektis3 {
+	bottom: 2px;
+	right: 2px;
+}
+
+.trapeziPektis4 {
+	top: 2px;
+	right: 2px;
+}
+
+.trapeziPektisOnoma {
+	width: 110px;
+	overflow: hidden;
+	margin: auto;
+	white-space: nowrap;
+	text-align: center;
+}
+
+.trapeziTheatisArea {
+	position: relative;
+	top: -4px;
+	padding: 0 4px 4px 4px;
+}
+
+.trapeziTheatis {
+	display: inline-block;
+	margin: 4px 2px 0 6px;
+	width: 120px;
+	white-space: nowrap;
+	background-color: #A6CC97;
+
+	border-style: solid;
+	border-width: 2px;
+	border-color: teal;
+	border-radius: 5px;
+	box-shadow: 1px 1px 4px #5D5D5D;
+}
+
+.trapeziTheatis:hover {
+	font-weight: bold;
+}
+
+.trapeziTheatisOnoma {
+	position: relative;
+	bottom: 1px;
+	width: 110px;
+	overflow: hidden;
+	margin: auto;
+	white-space: nowrap;
+	text-align: center;
+}
+
+#sizitisiKafenio {
+	border-style: solid solid none solid;
+	border-width: 1px;
+	border-color: olive;
+	background-image: url('../ikona/misc/sizitisi.jpg');
+	background-repeat: repeat;
+}
+
+/**********************************************************************************************************************/
+
+#lpanel {
+	cursor: auto;
+}
+
+#prosklisiArea {
+	white-space: normal;
+	height: 159px;
+
+	border-style: solid none solid solid;
+	border-width: 1px;
+	border-color: olive;
+}
+
+#sizitisiTrapezi {
+	border-style: solid none none solid;
+	border-width: 1px;
+	border-color: olive;
+	background-image: url('../ikona/misc/sizitisi.jpg');
+	background-repeat: repeat;
+}
+
+/**********************************************************************************************************************/
+
+.sizitisiLabel {
+	position: absolute;
+	width: 70%;
+	margin: 0 15%;
+	text-align: center;
+	white-space: normal;
+	font-family: Impact, Charcoal, sans-serif;
+	font-size: 40px;
+	color: rgba(0, 128, 128, 0.2);
+	overflow: hidden;
+}
+
+.sizitisi {
+	position: relative;
+	margin: 2px 2px 2px 20px;
+	white-space: normal;
+}
+
+.sizitisiEpilogi {
+	background-color: rgba(0, 61, 255, 0.06);
+}
+
+.sizitisiPektis {
+	display: inline;
+	margin-left: -18px;
+	margin-right: 6px;
+
+	font-style: italic;
+	font-weight: bold;
+	color: blue;
+}
+
+.sizitisiPektisEgo {
+	background-color: rgba(255, 255, 0, 0.40);
+	border-style: none none solid none;
+	border-width: 1px;
+	border-color: rgba(194, 194, 194, 0.27);
+}
+
+.sizitisiSxolio {
+	display: inline;
+}
+
+.sizitisiEmoticon {
+	width: 30px;
+}
+
+.sizitisiProepiskopisi {
+	opacity: 0.6;
+}
+
+.sizitisiPagomeni {
+	background-image: url('../ikona/misc/pagomeno.jpg') !important;
+}
+
+.sizitisiPote {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+
+	color: rgb(30, 156, 216);
+	background-color: rgb(253, 253, 181);
+}
+
+.sizitisiPote:before {
+	content: '[\2009';
+}
+
+.sizitisiPote:after {
+	content: '\2009]';
+}
+
+/**********************************************************************************************************************/
+
+#diataxiFrame {
+	top: 60px;
+	left: 220px;
+}
+
+.diataxiItemArea {
+	width: 600px;
+	height: 300px;
+	overflow-x: hidden;
+	overflow-y: auto;
+/*
+background-color: yellow;
+*/
+}
+
+.diataxiItem {
+	padding: 2px 6px;
+	margin: 4px;
+}
+
+.diataxiEpilogi {
+	color: rgb(3, 10, 80);
+	text-shadow: 0 0 2px #888;
+}
+
+.diataxiKodikos {
+	margin: 0 4px;
+	display: inline-block;
+	cursor: ns-resize;
+}
+
+.diataxiOnomasia {
+	display: inline-block;
+	padding: 0 10px;
+	width: 530px;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.diataxiPanel {
+	padding: 10px;
+	top: 0;
+	left: 0;
+/*
+background-color: olive;
+*/
+}
+
+.diataxiOnomasiaInput {
+	margin-right: 10px;
+	width: 20em;
+}
+
+.diataxiBaresIcon {
+	position: relative;
+	top: 5px;
+	cursor: move;
+}
+
+.diataxiButton {
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+.diataxiKlisimoIcon {
+	top: 14px;
+	right: 8px;
+}
+
+/**********************************************************************************************************************/
+
+#kafinfo {
+	top: 60px;
+	left: 545px;
+}
+
+#kafinfoKodikos {
+	width: 4em;
+}
+
+#kafinfoOnomasia {
+	width: 14em;
+}
+
+/**********************************************************************************************************************/
+
+#profinfo {
+	top: 110px;
+	left: 140px;
+
+	width: 660px;
+	height: 380px;
+}
+
+#profinfoPanel {
+	position: absolute;
+	left: 0px;
+	top: 4px;
+
+	width: 644px;
+	height: 34px;
+background-color: yellow;
+}
+
+.profinfoNisida {
+	position: relative;
+	display: inline;
+	margin-left: 8px;
+	background-color: rgba(0, 214, 255, 0.50);
+}
+
+.profinfoIpotono {
+	opacity: 0.7;
+}
+
+#profinfoLogin {
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#profinfoOnoma {
+	position: absolute;
+	bottom: 1px;
+	right: 26px;
+
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#profinfoPhoto {
+	display: inline;
+	position: relative;
+	top: 3px;
+	height: 31px;
+}
+
+#profinfoPhotoZoom {
+	display: none;
+
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 140px;
+
+	box-shadow: 1px 1px 4px #888;
+	border-radius: 10px 0 10px 0;
+	cursor: crosshair;
+}
+
+.profinfoIcon {
+	position: relative;
+	width: 30px;
+	margin: 0 4px;
+	cursor: pointer;
+}
+
+#profinfoMinimaIcon {
+	width: 40px;
+	cursor: pointer;
+}
+
+.profinfoInfo {
+	position: absolute;
+	left: 10px;
+	width: 660px;
+	border-radius: 5px;
+background-color: rgba(0, 128, 128, 0.20);
+/*
+*/
+}
+
+#profinfoPano {
+	top: 44px;
+	height: 150px;
+}
+
+#profinfoKato {
+	bottom: 10px;
+	height: 166px;
+}
+
+#profinfoMesi {
+	position: absolute;
+	top: 196px;
+	left: 0px;
+	width: 100%;
+	height: 26px;
+background-color: yellow;
+}
+
+.profinfoButton {
+	display: inline;
+	position: relative;
+	bottom: 7px;
+	cursor: pointer;
+}
+
+.oplismosProfinfo {
+	cursor: crosshair;
+}
+
+/**********************************************************************************************************************/
+
+.prosklisi {
+	position: relative;
+	background-color: #A8CAA3;
+	padding: 6px 0 6px 38px;
+	border-style: none none solid none;
+	border-width: 1px;
+	border-color: #888;
+}
+
+.prosklisiPexnidiIcon {
+	position: absolute;
+	bottom: 1px;
+	left: 30px;
+	width: 28px;
+	opacity: 0.6;
+}
+
+.prosklisiDeleteIcon {
+	position: absolute;
+	left: 0px;
+	bottom: 1px;
+	width:  30px;
+	cursor: crosshair;
+}
+
+.prosklisiIserxomeni {
+	background-color: #EDFFD2;
+	cursor: pointer;
+}
+
+.prosklisiApo {
+	display: inline;
+	font-weight: bold;
+}
+
+.prosklisiApo:before {
+	content: 'από';
+	margin-right: 4px;
+
+	font-weight: normal;
+	font-style: italic;
+}
+
+.prosklisiApo:after {
+	content: ',';
+
+	font-weight: normal;
+	font-style: italic;
+}
+
+.prosklisiPros {
+	display: inline;
+	font-weight: bold;
+}
+
+.prosklisiPros:before {
+	content: 'προς';
+	margin-right: 4px;
+
+	font-weight: normal;
+	font-style: italic;
+}
+
+.prosklisiPros:after {
+	content: ',';
+
+	font-weight: normal;
+	font-style: italic;
+}
+
+.prosklisiTrapezi {
+	display: inline;
+	font-weight: bold;
+}
+
+.prosklisiTrapezi:before {
+	content: 'τραπέζι';
+	margin: 0 4px;
+
+	font-weight: normal;
+	font-style: italic;
+}
+
+.prosklisiEpidosi {
+	position: absolute;
+	bottom: 6px;
+	right: 0px;
+
+	color: rgb(30, 156, 216);
+	background-color: rgba(253, 253, 181, 0.30);
+}
+
+.prosklisiEpidosi:before {
+	content: '[\2009';
+}
+
+.prosklisiEpidosi:after {
+	content: '\2009]';
+}
+
+/**********************************************************************************************************************/
+
+.pektis {
+	background-color: #83B283;
+}
+
+.pezon {
+	background-image: url('../ikona/misc/pezon.png') !important;
+	background-repeat: repeat;
+}
+
+.theatis {
+	background-color: #B4A77A;
+}
+
+.apasxolimenos {
+	background-image: url('../ikona/endixi/apasxolimenos.png');
+	background-repeat: repeat;
+}
+
+.offline {
+	border-style: dotted !important;
+}
+
+.pektisAgapimenoIcon {
+	position: absolute;
+	top: 0px;
+	left: -5px;
+	width: 25px;
+}
+
+/**********************************************************************************************************************/
+
+.sxesiBoxTeri {
+	background-color: #DBE462;
+}
+
+.sxesiBoxFilos {
+	background-color: #DBB85D;
+}
+
+.sxesiBoxApoklismenos {
+}
+
+.sxesiOnomaTeri {
+	color: #2C5584;
+	text-shadow: 1px 1px #000000;
+}
+
+.sxesiOnomaFilos {
+	color: #185C18;
+	text-shadow: 1px 1px #000000;
+}
+
+.sxesiOnomaApoklismenos {
+	color: #991717;
+	text-shadow: 1px 1px #022C02;
+}
+
+/**********************************************************************************************************************/
+
+.katevato {
+	overflow-x: hidden;
+	overflow-y: auto;
+}

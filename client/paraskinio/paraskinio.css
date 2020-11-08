@@ -1,0 +1,38 @@
+#ofelimo {
+	min-height: 0;
+}
+
+#paraskinioKlisimoIcon {
+	position: fixed;
+	width: 26px;
+	top: 10px;
+	right: 10px;
+	opacity: 0.2;
+	cursor: pointer;
+}
+
+.paraskinioDigmaContainer {
+	display: inline-block;
+	margin: 10px 10px;
+	background-image: none;
+	background-color: #FFF;
+}
+
+.paraskinioDigma {
+	width: 80px;
+	height: 80px;
+	background-repeat: repeat;
+	cursor: pointer;
+
+	border-style: solid;
+	border-width: 3px;
+	border-color: #FFF0B2;
+}
+
+.paraskinioDigmaTrexon {
+	border-color: #5F87AC;
+}
+
+.paraskinioDigmaCandi {
+	border-color: #F5A630;
+}

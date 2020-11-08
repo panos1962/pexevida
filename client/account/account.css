@@ -1,0 +1,56 @@
+#formaContainer {
+	display: inline-block;
+	padding: 20px 0 0 20px;
+}
+
+#formaSoma {
+	position:relative;
+}
+
+#login {
+	width: 14em;
+}
+
+#onoma {
+	width: 26em;
+}
+
+#email {
+	width: 14em;
+}
+
+#fotofile {
+	padding: 0;
+}
+
+#kodikos, #kodikos1, #kodikos2 {
+	width: 14em;
+}
+
+#fotoContainer {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	height: 80px;
+	width: 80px;
+	overflow: hidden;
+	border-style: outset;
+	border-width: 1px;
+	border-color: #888;
+	box-shadow: 2px 2px 4px #888;
+	cursor: pointer;
+}
+
+#fotoIcon {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	height: 100%;
+}
+
+#ipodoxi {
+	display: none;
+	margin-top: 10px;
+	width: 80%;
+	background-color: #FFFFCC;
+}
