@@ -302,6 +302,7 @@ class Globals {
 		switch (self::$server) {
 		case "http://127.0.0.1/pexevida/";
 		case "http://localhost/pexevida/";
+		case "http://opasopa.net/vida/";
 		case "http://www.pexevida.gr/":
 		case "http://www.pexevida.eu/":
 		case "http://www.pexevida.com/":
