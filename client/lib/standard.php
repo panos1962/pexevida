@@ -128,7 +128,7 @@ class Globals {
 			break;
 		case "opasopa.net":
 		case "www.opasopa.net":
-			self::$server = "http://" . $_SERVER["HTTP_HOST"] . "/vida";
+			self::$server = "http://" . $_SERVER["HTTP_HOST"] . "/vida/";
 			break;
 		default:
 			self::klise_fige($_SERVER["HTTP_HOST"] . ": unknown server");
