@@ -16,7 +16,7 @@ define("IDIOKTITIS_ONOMA", "Panos Papadopoulos");
 // Το email του κατασκευαστή και ιδιοκτήτη του κώδικα δίνεται σε
 // συμβολική σταθερά.
 
-define("IDIOKTITIS_EMAIL", "panos1962@gmail.com");
+define("IDIOKTITIS_EMAIL", "prefadoros@hotmail.com");
 
 // Η συμβολική σταθερά "KENTRO_IPOSTIRIXIS" περιέχει το URL του κέντρου
 // υποστήριξης της βίδας στο διαδίκτυο.
