@@ -319,7 +319,7 @@ class Globals {
 			self::$db = NULL;
 			die(2);
 		}
-		@self::$db->set_charset("utf8") || self::klise_fige("cannot set character set (database)");
+		@self::$db->set_charset("utf8mb4") || self::klise_fige("cannot set character set (database)");
 	}
 
 	// Η μέθοδος "query" δέχεται ως πρώτη παράμετρο ένα SQL query και το εκτελεί.

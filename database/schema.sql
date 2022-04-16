@@ -14,8 +14,8 @@ DROP DATABASE IF EXISTS `__DATABASE__`
 -- Με το παρόν κατασκευάζουμε την database.
 
 CREATE DATABASE `__DATABASE__`
-DEFAULT CHARSET = utf8
-DEFAULT COLLATE = utf8_general_ci
+DEFAULT CHARSET = utf8mb4
+DEFAULT COLLATE = utf8mb4_general_ci
 ;
 
 \! echo "database created!"
