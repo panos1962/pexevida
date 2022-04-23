@@ -128,6 +128,8 @@ class Globals {
 			break;
 		case "opasopa.net":
 		case "www.opasopa.net":
+		case "prefadoros.win":
+		case "www.prefadoros.win":
 			self::$server = "http://" . $_SERVER["HTTP_HOST"] . "/vida/";
 			break;
 		default:
@@ -303,6 +305,7 @@ class Globals {
 		case "http://127.0.0.1/pexevida/";
 		case "http://localhost/pexevida/";
 		case "http://opasopa.net/vida/";
+		case "http://prefadoros.win/vida/";
 		case "http://www.pexevida.gr/":
 		case "http://www.pexevida.eu/":
 		case "http://www.pexevida.com/":

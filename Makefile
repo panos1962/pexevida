@@ -3,6 +3,21 @@ all:
 	@(cd client/lib && make -s)
 	@(cd client/arena && make -s)
 
+status:
+	git status
+
+diff:
+	git diff
+
+pull:
+	git pull
+
+commit:
+	git commit -m "modifications" .
+
+push:
+	git push
+
 check:
 	@find . -name '*.min.js' -type f -print
 
