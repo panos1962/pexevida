@@ -447,8 +447,21 @@ class Globals {
 	// περικλείουν, εκτός και αν περάσουμε δεύτερη (false) παράμετρο.
 
 	public static function asfales_sql($s, $string = TRUE) {
-		if (get_magic_quotes_gpc()) $s = stripslashes($s);
-		if (isset(self::$db)) $s = self::$db->real_escape_string($s);
+		/*
+
+		H χρήση της function "get_magic_quotes_gpc" είναι παρωχημένη
+		και δημιουργεί πρόβλημα σε νεότερες εκδόσεις της PHP. Το πιο
+		πιθανό είναι ότι η χρήση της δεν είναι καθόλου απαραίτητη
+		ούτε σε παλαιότερες εκδόσεις της PHP.
+
+		if (get_magic_quotes_gpc())
+		$s = stripslashes($s);
+
+		*/
+
+		if (isset(self::$db))
+		$s = self::$db->real_escape_string($s);
+
 		return($string ? "'" . $s . "'" : $s);
 	}
 
