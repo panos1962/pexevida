@@ -115,12 +115,10 @@ pid="$(skiserPid)"
 export MYSQL_PWD="$(sed 's;[^a-zA-Z0-9];;g' misc/.mistiko/bekadb)"
 
 if [ -n "${pektis}" ]; then
-	minima="Ο παίκτης \"${pektis}\""
+	minima="Player \"${pektis}\" restarted the server."
 else
-	minima="Κάποιος παίκτης"
+	minima="Server restarted.".
 fi
-
-minima="${minima} επανεκκίνησε τον server σκηνικού."
 
 sed "s/__minima__/${minima}/" "${PEXEVIDA_BASEDIR}/skiser/reset.sql" |\
 mysql -u pexevida pexevida ||
