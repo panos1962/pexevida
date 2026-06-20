@@ -56,7 +56,7 @@ skiserPid() {
 pid="$(skiserPid)"
 
 [ -n "${pid}" ] && {
-	echo "${progname}: skiser is runing (${pid})" >&2
+	echo "${progname}: skiser is active (pid: ${pid})" >&2
 	echo "Ο server σκηνικού δείχνει ενεργός (process id: ${pid})"
 	exit 2
 }
