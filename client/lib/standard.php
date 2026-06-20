@@ -114,7 +114,7 @@ class Globals {
 		case "localhost":
 		case "127.0.0.1":
 			self::$server = "http://" . $_SERVER["HTTP_HOST"] . "/pexevida/";
-			self::$titlos = "Μισθοδοσία";
+			self::$titlos = "Βίδα (local)";
 			break;
 		case "www.pexevida.gr":
 		case "www.pexevida.eu":
