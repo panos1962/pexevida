@@ -1,5 +1,38 @@
 #!/usr/bin/env bash
 
+# Το παρόν script χρησιμοποιείται σε καταστάσεις έκτακτης ανάγκης, όπου
+# έχει «πέσει» ο server σκηνικού και το site δεν λειτουργεί. Σε τέτοιες
+# περιπτώσεις, συνήθως η δυσλειτουργία του server σκηνικού οφείλεται σε
+# κάποια ενέργεια (κίνηση) την οποία ο server σκηνικού δεν κατάφερε να
+# διαχειριστεί με τον προσήκοντα τρόπο· είναι καταστάσεις που θυμίζουν
+# το panic στα παλαιά UNIX συστήματα.
+#
+# Στις περιπτώσεις, λοιπόν, όπου έχει πάψει να λειτουργεί ο server σκηνικού,
+# μπορούμε να τον επανεκκινήσουμε, βστόσο είναι πολύ πιθανόν κάποια από τις
+# τελευταίες κινήσεις να έχει προκαλέσει το πρόβλημα, οπότε η λειτουργία τού
+# server σκηνικού θα επαναδιακοπεί. Για να είμαστε σίγουροι ότι ο server
+# σκηνικού θα επανεκκινήσει σωστά, μπορούμε να διαγράψουμε όλες τις
+# παρτίδες και τις τρέχουσες συνεδρίες, και κατόπιν να επανεκκινήσουμε
+# τον server σκηνικού σε ένα «καθαρό» τοπίο.
+#
+# Το πρόγραμμα μπορεί να «τρέξει» είτε απευθείας σε κάποιο interactive
+# bash session, είτε εξ αποστάσεως με αίτημα μέσω διαδικτύου. Το αίτημα,
+# τη στιγμή που γράφονται αυτές οι γραμμές είναι:
+#
+#	http://opasopa.gr/vida/reset?code=XXXX
+#
+# Εναλλακτικά, μπορούμε από απομεμακρυσμένο shell session να δώσουμε την
+# εντολή:
+#
+#	curl 'http://opasopa.gr/reset/index.php?code=XXXX'
+#
+# όπου "XXXX" είναι κάποιος κωδικός που έχει δοθεί σε πρόσωπα εμπιστοσύνης
+# τα οποία μπορούν να επανεκκινήσουν τον server. Οι εν λόγω κωδικοί είναι
+# καταγεγραμμένοι στο αρχείο "misc/.mistiko/reset.codes". Πιο συγκεκριμένα,
+# σε αυτό το αρχείο έχουμε μία γραμμή για κάθε δεκτό κωδικό, όπου ο κωδικός
+# είναι το πρώτο πεδίο (λέξη) της γραμμής, ενώ όλα τα υπόλοιπα πεδία μπορούν
+# να χρησιμοποιηθούν για την καταγραφή της επανεκκίνησης.
+
 progname=`basename "${0}"`
 
 minima() {
@@ -27,6 +60,20 @@ cd "${PEXEVIDA_BASEDIR}" 2>/dev/null ||
 fatal "${progname}: ${PEXEVIDA_BASEDIR}: invalid directory"
 
 basedir="$(pwd)"
+lockdir="${basedir}/misc/reset.lck"
+
+cleanup() {
+	[ -d "${lockdir}" ] && rmdir "${lockdir}"
+}
+
+mkdir "${lockdir}" 2>/dev/null || {
+	echo "${progname}: reset is running" >&2
+	echo "Κάποιος έχει ήδη εκκινήσει τη διαδικασία επαναφοράς"
+	exit 2
+}
+
+trap "cleanup; exit 2" 0 1 2 3 15
+
 nodetag="$(basename ${basedir})"
 codefile="${basedir}/misc/.mistiko/reset.codes"
 
@@ -37,8 +84,9 @@ case $# in
 	fatal "${0} { reset_code }"
 esac
 
-awk -v code="${1}" '$1 == code {
+pektis="$(awk -v code="${1}" '$1 == code {
 	found = 1
+	print $2
 	exit(0)
 }
 END {
@@ -47,7 +95,7 @@ END {
 
 	else
 	exit(1)
-}' "${codefile}"  || fatal "invalid reset code"
+}' "${codefile}")"  || fatal "invalid reset code"
 
 skiserPid() {
 	ps -fC ${node} | awk '$NF == "'${nodetag}'" { print $2 + 0 }'
@@ -66,7 +114,22 @@ pid="$(skiserPid)"
 
 export MYSQL_PWD="$(sed 's;[^a-zA-Z0-9];;g' misc/.mistiko/bekadb)"
 
-mysql -u pexevida pexevida <skiser/reset.sql ||
+if [ -n "${pektis}" ]; then
+	minima="Ο παίκτης \"${pektis}\""
+else
+	minima="Κάποιος παίκτης"
+fi
+
+minima="${minima} επανεκκίνησε τον server σκηνικού."
+
+sed "s/__minima__/${minima}/" "${PEXEVIDA_BASEDIR}/skiser/reset.sql" |\
+mysql -u pexevida pexevida ||
 fatal "SQL failed"
 
-exec skiser/skiser.sh restart
+skiser/skiser.sh restart
+ret="$?"
+
+cleanup
+trap "" 0
+
+exit $ret

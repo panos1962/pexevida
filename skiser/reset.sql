@@ -19,3 +19,15 @@ DELETE FROM `trapezi`
 
 DELETE FROM `sizitisi`
 ;
+
+INSERT INTO `sizitisi` (
+	`pektis`,
+	`trapezi`,
+	`kafenio`,
+	`sxolio`
+) VALUES (
+	'panos',
+	NULL,
+	NULL,
+	'__minima__'
+);
