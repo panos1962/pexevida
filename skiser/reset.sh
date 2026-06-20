@@ -3,11 +3,8 @@
 progname=`basename "${0}"`
 
 minima() {
-	if [ -t 1 -a -t 2 ]; then
-		echo "$@"
-	else
-		echo "$@" | tee "/dev/stderr"
-	fi
+	echo "$@"
+	[ -t 1 -a -t 2 ] || echo "$@" >&2
 }
 
 fatal() {
