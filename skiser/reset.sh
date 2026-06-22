@@ -36,6 +36,15 @@
 
 progname=`basename "${0}"`
 
+[ -z "${PEXEVIDA_BASEDIR}" ] &&
+export PEXEVIDA_BASEDIR="/var/opt/pexevida"
+
+lockdir="${PEXEVIDA_BASEDIR}/misc/reset.lck"
+
+cleanup() {
+	[ -d "${lockdir}" ] && rmdir "${lockdir}"
+}
+
 minima() {
 	echo "$@"
 	[ -t 1 -a -t 2 ] || echo "$@" >&2
@@ -46,6 +55,9 @@ fatal() {
 	exit 2
 }
 
+cd "${PEXEVIDA_BASEDIR}" ||
+fatal "${progname}: ${PEXEVIDA_BASEDIR}: invalid directory"
+
 if [ -x /usr/bin/node ]; then
 	node="node"
 elif [ -x /usr/bin/nodejs ]; then
@@ -54,29 +66,16 @@ else
 	fatal "${progname}: node/nodejs not found"
 fi
 
-[ -z "${PEXEVIDA_BASEDIR}" ] &&
-export PEXEVIDA_BASEDIR="/var/opt/pexevida"
-
-cd "${PEXEVIDA_BASEDIR}" 2>/dev/null ||
-fatal "${progname}: ${PEXEVIDA_BASEDIR}: invalid directory"
-
-basedir="$(pwd)"
-lockdir="${basedir}/misc/reset.lck"
-
-cleanup() {
-	[ -d "${lockdir}" ] && rmdir "${lockdir}"
-}
-
 mkdir "${lockdir}" 2>/dev/null || {
 	echo "${progname}: reset is running" >&2
 	echo "Κάποιος έχει ήδη εκκινήσει τη διαδικασία επαναφοράς"
 	exit 2
 }
 
-trap "cleanup; exit 2" 0 1 2 3 15
+trap "trap 0; cleanup; exit 2" 0 1 2 3 15
 
-nodetag="$(basename ${basedir})"
-codefile="${basedir}/misc/.mistiko/reset.codes"
+nodetag="$(basename ${PEXEVIDA_BASEDIR})"
+codefile="${PEXEVIDA_BASEDIR}/misc/.mistiko/reset.codes"
 
 case $# in
 1)
@@ -124,7 +123,7 @@ export MYSQL_PWD="$(sed 's;[^a-zA-Z0-9];;g' misc/.mistiko/bekadb)"
 if [ -n "${pektis}" ]; then
 	minima="Player \"${pektis}\" restarted the server."
 else
-	minima="Server restarted.".
+	minima="Server restarted."
 fi
 
 sed 's/__minima__/'"${minima}"'/' "${PEXEVIDA_BASEDIR}/skiser/reset.sql" |\
@@ -135,6 +134,4 @@ skiser/skiser.sh restart
 ret="$?"
 
 cleanup
-trap "" 0
-
 exit $ret
