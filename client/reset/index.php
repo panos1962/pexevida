@@ -1,3 +1,8 @@
+<html>
+<head>
+<title>Reset server</title>
+</head>
+<body>
 <?php
 
 if (!array_key_exists("code", $_GET))
@@ -8,3 +13,4 @@ $reset_code = $_GET["code"];
 system("../../skiser/reset.sh " . $reset_code);
 
 ?>
+</body>
