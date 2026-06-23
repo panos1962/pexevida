@@ -39,7 +39,7 @@ progname=`basename "${0}"`
 [ -z "${PEXEVIDA_BASEDIR}" ] &&
 export PEXEVIDA_BASEDIR="/var/opt/pexevida"
 
-lockdir="${PEXEVIDA_BASEDIR}/misc/reset.lck"
+lockdir="${PEXEVIDA_BASEDIR}/misc/.mistiko/reset.lck"
 
 cleanup() {
 	[ -d "${lockdir}" ] && rmdir "${lockdir}"
@@ -68,7 +68,7 @@ fi
 
 mkdir "${lockdir}" 2>/dev/null || {
 	echo "${progname}: reset is running" >&2
-	echo "Κάποιος έχει ήδη εκκινήσει τη διαδικασία επαναφοράς"
+	echo "Κάποιος φαίνεται να έχει ήδη εκκινήσει τη διαδικασία επαναφοράς"
 	exit 2
 }
 
