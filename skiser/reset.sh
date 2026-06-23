@@ -33,21 +33,31 @@
 # είναι το πρώτο πεδίο (λέξη) της γραμμής, ενώ όλα τα υπόλοιπα πεδία μπορούν
 # να χρησιμοποιηθούν για την καταγραφή της επανεκκίνησης· στο ίδιο αρχείο
 # μπορούμε να γράψουμε και σχόλια που είναι γραμμές που εκκινούν με "#".
+#
+# Αν θέλουμε να τρέξουμε το πρόγραμμα απευθείας σε κάποιο shell session
+# του server, μπορούμε να δώσουμε την εντολή:
+#
+#	bash skiser/reset.sh XXXX
+#
+# όπου "XXXX" είναι ο κωδικός του χρήστη που επιχειρεί την επανεκκίνηση.
 
 progname=`basename "${0}"`
 
 [ -z "${PEXEVIDA_BASEDIR}" ] &&
 export PEXEVIDA_BASEDIR="/var/opt/pexevida"
 
-lockdir="${PEXEVIDA_BASEDIR}/misc/.mistiko/reset.lck"
-
-cleanup() {
-	[ -d "${lockdir}" ] && rmdir "${lockdir}"
-}
+# Η function "minima" εκτυπώνει τις παραμέτρους της στο standard output
+# και, εφόσον το standard error δεν συμπίπτει με το standard output,
+# η εκτύπωση των παραμέτρων επαναλαμβάνεται και στο standard error.
+# Αυτό το κάνουμε ώστε όταν ο χρήστης εκτελεί το πρόγραμμα μέσω web,
+# τα μηνύματα που λαμβάνει ο χρήστης στον υπολογιστή του να καταγράφονται
+# και στο log file του web server (Apache, nginx κλπ).
 
 minima() {
 	echo "$@"
-	[ -t 1 -a -t 2 ] || echo "$@" >&2
+
+	[ "/proc/self/fd/1" -ef "/proc/self/fd/2" ] ||
+	echo "$@" >&2
 }
 
 fatal() {
@@ -55,7 +65,7 @@ fatal() {
 	exit 2
 }
 
-cd "${PEXEVIDA_BASEDIR}" ||
+cd "${PEXEVIDA_BASEDIR}" 2>/dev/null ||
 fatal "${progname}: ${PEXEVIDA_BASEDIR}: invalid directory"
 
 if [ -x /usr/bin/node ]; then
@@ -65,6 +75,21 @@ elif [ -x /usr/bin/nodejs ]; then
 else
 	fatal "${progname}: node/nodejs not found"
 fi
+
+# Λαμβάνουμε μέριμνα ώστε να μην τρέξει το πρόγραμμα επενεκκίνησης από δύο
+# ή περισσότερους χρήστες ταυτόχρονα. Για να διασφαλίσουμε τη μοναδικότητα
+# χρησιμοποιούμε ένα directory ως «κλειδαριά».
+
+lockdir="${PEXEVIDA_BASEDIR}/misc/.mistiko/reset.lck"
+
+# Η function "cleanup" αφαιρεί το κλείδωμα μοναδικότητας μετά το πέρας των
+# εργασιών επανεκκίνησης του server σκηνικού.
+
+cleanup() {
+	[ -d "${lockdir}" ] && rmdir "${lockdir}"
+}
+
+trap "" 1 2 3 15
 
 mkdir "${lockdir}" 2>/dev/null || {
 	echo "${progname}: reset is running" >&2
