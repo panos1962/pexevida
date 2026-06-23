@@ -134,4 +134,5 @@ skiser/skiser.sh restart
 ret="$?"
 
 cleanup
+trap 0
 exit $ret
